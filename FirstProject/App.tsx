@@ -29,12 +29,12 @@ const Styles = StyleSheet.create({
     justifyContent: 'center',
   },
   whiteText: {
-    fontSize: 24,
+    fontSize: 26,
     fontWeight: '600',
     color: "#FFFFFF"
   },
   blackText: {
-    fontSize: 24,
+    fontSize: 26,
     fontWeight: '600',
     color: "#000000"
   },
