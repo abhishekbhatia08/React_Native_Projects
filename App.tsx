@@ -14,7 +14,9 @@ function App(): React.JSX.Element {
   return (
     <View style={Styles.container}>
       <SafeAreaView>
-        <Text style={isDarkMode ? Styles.whiteText : Styles.blackText}>Helloo world!</Text>
+        <Text style={isDarkMode ? Styles.whiteText : Styles.blackText}>
+          Hello world!
+        </Text>
       </SafeAreaView>
     </View>
   );
