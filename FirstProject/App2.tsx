@@ -3,16 +3,17 @@ import React from 'react'
 import FlatCards from './components/FlatCards'
 import ElevatedCards from './components/ElevatedCards'
 import FancyCards from './components/FancyCards'
+import ContactList from './components/ContactList'
 
 const App2 = () => {
     return (
         <View style={styles.screen}>
             <SafeAreaView>
-                <Text style={styles.headingText}>App2</Text>
-                <ScrollView>
+                <ScrollView scrollEnabled={true}>
                     <FlatCards />
                     <ElevatedCards />
                     <FancyCards />
+                    <ContactList />
                 </ScrollView>
             </SafeAreaView>
         </View>
