@@ -1,19 +1,24 @@
-import { Image, StyleSheet, Text, View } from 'react-native'
+import { Image, StyleSheet, Text, View, Linking, TouchableOpacity } from 'react-native'
 import React from 'react'
 
 export default function FancyCards() {
+    function openWebsite(weblink: string) {
+        Linking.openURL(weblink);
+    }
     return (
         <View>
             <Text style={styles.headingText}>Fancy Cards</Text>
-            <View style={[styles.card, styles.elevatedCard]}>
-                <Image source={{ uri: "https://images.unsplash.com/photo-1564507592333-c60657eea523?fm=jpg&q=60&w=3000&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTB8fHRhaiUyMG1haGFsfGVufDB8fDB8fHww" }} style={styles.cardImage}></Image>
-                <View style={styles.textPadding}>
-                    <Text style={styles.cartTitle}>Taj Mahal</Text>
-                    <Text style={styles.cartLabel}>Agra, UP, India</Text>
-                    <Text style={styles.cartDescription}>The Taj Mahal is an ivory-white marble mausoleum on the right bank of the river Yamuna in Agra, Uttar Pradesh, India. It was commissioned in 1631 by the fifth Mughal emperor, Shah Jahan to house the tomb of his beloved wife, Mumtaz Mahal.</Text>
-                    <Text style={styles.cardFooter}>10 Minutes away</Text>
+            <TouchableOpacity activeOpacity={0.1} onPress={() => openWebsite("https://en.wikipedia.org/wiki/Taj_Mahal")}>
+                <View style={[styles.card, styles.elevatedCard]}>
+                    <Image source={{ uri: "https://images.unsplash.com/photo-1564507592333-c60657eea523?fm=jpg&q=60&w=3000&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTB8fHRhaiUyMG1haGFsfGVufDB8fDB8fHww" }} style={styles.cardImage}></Image>
+                    <View style={styles.textPadding}>
+                        <Text style={styles.cartTitle}>Taj Mahal</Text>
+                        <Text style={styles.cartLabel}>Agra, UP, India</Text>
+                        <Text style={styles.cartDescription}>The Taj Mahal is an ivory-white marble mausoleum on the right bank of the river Yamuna in Agra, Uttar Pradesh, India. It was commissioned in 1631 by the fifth Mughal emperor, Shah Jahan to house the tomb of his beloved wife, Mumtaz Mahal.</Text>
+                        <Text style={styles.cardFooter}>10 Minutes away</Text>
+                    </View>
                 </View>
-            </View>
+            </TouchableOpacity>
         </View>
     )
 }
