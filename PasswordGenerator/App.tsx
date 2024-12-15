@@ -1,118 +1,75 @@
-/**
- * Sample React Native App
- * https://github.com/facebook/react-native
- *
- * @format
- */
+import { StyleSheet, Text, View } from 'react-native'
+import React, {useState} from 'react'
 
-import React from 'react';
-import type {PropsWithChildren} from 'react';
-import {
-  SafeAreaView,
-  ScrollView,
-  StatusBar,
-  StyleSheet,
-  Text,
-  useColorScheme,
-  View,
-} from 'react-native';
+import * as Yup from 'yup'
 
-import {
-  Colors,
-  DebugInstructions,
-  Header,
-  LearnMoreLinks,
-  ReloadInstructions,
-} from 'react-native/Libraries/NewAppScreen';
+const PasswordSchema = Yup.object().shape({
+  passwordLength: Yup.number()
+  .min(4, 'Should be min of 4 characters')
+  .max(16, 'Should be max of 16 characters')
+  .required('Length is required')
+})
 
-type SectionProps = PropsWithChildren<{
-  title: string;
-}>;
+export default function App() {
 
-function Section({children, title}: SectionProps): React.JSX.Element {
-  const isDarkMode = useColorScheme() === 'dark';
+  const [password, setPassword] = useState('');
+  const [isGenerated, isPasswordGenerate] = useState(false)
+  const [lowerCase, useLowerCase] = useState(false)
+  const [upperCase, useUpperCase] = useState(false)
+  const [numbers, useNumbers] = useState(false)
+  const [symbols, useSymbols] = useState(false)
+
+  const generatePasswordString = (passwordLength: number): string => {
+    let charactersList = ''
+
+    const upperCase = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ'
+    const lowerCase = 'abcdefghijklmnopqrstuvwxyz'
+    const numbers = '0123456789'
+    const symbols = '!@#$%^&*()_+~`|}{[]:'
+
+    if (upperCase) {
+      charactersList += upperCase
+    }
+    if (lowerCase) {
+      charactersList += lowerCase
+    }
+    if (numbers) {
+      charactersList += numbers
+    }
+    if (symbols) {
+      charactersList += symbols
+    }
+
+    const passwordResult = createPassword(charactersList, passwordLength);
+    return passwordResult;
+
+    setPassword(passwordResult);
+    isPasswordGenerate(true);
+  }
+
+  const createPassword = (charactersString: string, passwordLength: number) => {
+    let password = ''
+    for (let i = 0; i < passwordLength; i++) {
+      let charIndex = Math.floor(Math.random() * charactersString.length);
+      password += charactersString.charAt(charIndex);
+    }
+    return password
+  }
+
+  const resetPasswordState = () => {
+    setPassword('');
+    isPasswordGenerate(false);
+    useLowerCase(false);
+    useUpperCase(false);
+    useNumbers(false);
+    useSymbols(false);
+  }
+  
   return (
-    <View style={styles.sectionContainer}>
-      <Text
-        style={[
-          styles.sectionTitle,
-          {
-            color: isDarkMode ? Colors.white : Colors.black,
-          },
-        ]}>
-        {title}
-      </Text>
-      <Text
-        style={[
-          styles.sectionDescription,
-          {
-            color: isDarkMode ? Colors.light : Colors.dark,
-          },
-        ]}>
-        {children}
-      </Text>
+    <View>
+      <Text>App</Text>
     </View>
-  );
+  )
 }
 
-function App(): React.JSX.Element {
-  const isDarkMode = useColorScheme() === 'dark';
-
-  const backgroundStyle = {
-    backgroundColor: isDarkMode ? Colors.darker : Colors.lighter,
-  };
-
-  return (
-    <SafeAreaView style={backgroundStyle}>
-      <StatusBar
-        barStyle={isDarkMode ? 'light-content' : 'dark-content'}
-        backgroundColor={backgroundStyle.backgroundColor}
-      />
-      <ScrollView
-        contentInsetAdjustmentBehavior="automatic"
-        style={backgroundStyle}>
-        <Header />
-        <View
-          style={{
-            backgroundColor: isDarkMode ? Colors.black : Colors.white,
-          }}>
-          <Section title="Step One">
-            Edit <Text style={styles.highlight}>App.tsx</Text> to change this
-            screen and then come back to see your edits.
-          </Section>
-          <Section title="See Your Changes">
-            <ReloadInstructions />
-          </Section>
-          <Section title="Debug">
-            <DebugInstructions />
-          </Section>
-          <Section title="Learn More">
-            Read the docs to discover what to do next:
-          </Section>
-          <LearnMoreLinks />
-        </View>
-      </ScrollView>
-    </SafeAreaView>
-  );
-}
-
-const styles = StyleSheet.create({
-  sectionContainer: {
-    marginTop: 32,
-    paddingHorizontal: 24,
-  },
-  sectionTitle: {
-    fontSize: 24,
-    fontWeight: '600',
-  },
-  sectionDescription: {
-    marginTop: 8,
-    fontSize: 18,
-    fontWeight: '400',
-  },
-  highlight: {
-    fontWeight: '700',
-  },
-});
-
-export default App;
+const styles = StyleSheet.create({})
