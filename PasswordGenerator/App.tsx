@@ -111,7 +111,7 @@ export default function App() {
                   <BouncyCheckbox
                     isChecked={upperCase}
                     onPress={() => setUpperCase(!upperCase)}
-                    fillColor="#FED85D"
+                    fillColor="#29AB87"
                   />
                 </View>
                 <View style={styles.checkboxWrapper}>
@@ -119,7 +119,7 @@ export default function App() {
                   <BouncyCheckbox
                     isChecked={numbers}
                     onPress={() => setNumbers(!numbers)}
-                    fillColor="#C9A0DC"
+                    fillColor="#29AB87"
                   />
                 </View>
                 <View style={styles.checkboxWrapper}>
@@ -127,7 +127,7 @@ export default function App() {
                   <BouncyCheckbox
                     isChecked={symbols}
                     onPress={() => setSymbols(!symbols)}
-                    fillColor="#FC80A5"
+                    fillColor="#29AB87"
                   />
                 </View>
                 <View style={styles.formActions}>
@@ -237,6 +237,8 @@ const styles = StyleSheet.create({
     padding: 12,
     borderRadius: 8,
     width: '45%',
+    alignItems: 'center',
+    justifyContent: 'center',
   },
   secondaryBtnTxt: {
     color: '#333',
