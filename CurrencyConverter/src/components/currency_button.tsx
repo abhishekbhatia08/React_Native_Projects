@@ -25,17 +25,11 @@ const styles = StyleSheet.create({
         padding: 10,
         width: 120,
         borderWidth: 4,
+        backgroundColor: '#333',
         borderColor: '#333',
         alignContent: 'center',
         justifyContent: 'center',
         elevation: 2,
-        shadowOffset: {
-            width: 1,
-            height: 1,
-        },
-        shadowColor: '#333',
-        shadowOpacity: 0.1,
-        shadowRadius: 1,
         height: 120
     },
     flag: {
