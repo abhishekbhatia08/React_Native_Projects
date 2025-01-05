@@ -1,6 +1,6 @@
 import React from 'react'
 import { View, StyleSheet, Pressable } from 'react-native'
-import TrackPlayer, { State, usePlaybackState, useIsPlaying } from 'react-native-track-player'
+import TrackPlayer, { State, usePlaybackState } from 'react-native-track-player'
 
 import Icon from 'react-native-vector-icons/MaterialIcons'
 
@@ -9,7 +9,6 @@ import { playbackService } from '../../musicPlayerServices'
 const ControlCenter = () => {
 
     const playBackState = usePlaybackState()
-    const isPlaying = useIsPlaying();
     // next button
     const skipToNext = async () => {
         await TrackPlayer.skipToNext()
@@ -19,11 +18,11 @@ const ControlCenter = () => {
         await TrackPlayer.skipToPrevious()
     }
 
-    const togglePlayback = async () => {
+    const togglePlayback = async (playback: State) => {
         const  currentTrack = await TrackPlayer.getCurrentTrack()
 
         if (currentTrack !== null) {
-            if (isPlaying) {
+            if (playback == State.Playing) {
                 await TrackPlayer.pause()
             } else {
                 await TrackPlayer.play()
@@ -36,10 +35,10 @@ const ControlCenter = () => {
         <Pressable onPress={skipToPrevious}>
             <Icon style={styles.icon} name="skip-previous" size={40} />
         </Pressable>
-        <Pressable onPress={() => togglePlayback()}>
+        <Pressable onPress={() => togglePlayback(playBackState)}>
             <Icon 
             style={styles.icon} 
-            name={isPlaying ? "pause" : "play-arrow"} 
+            name={playBackState == State.Playing ? "pause" : "play-arrow"} 
             size={75} />
         </Pressable>
         <Pressable onPress={skipToNext}>

@@ -33,12 +33,10 @@ const styles = StyleSheet.create({
       width: 350,
       height: 40,
       marginTop: 25,
-  
       flexDirection: 'row',
     },
     timeContainer: {
       width: 340,
-  
       flexDirection: 'row',
       justifyContent: 'space-between',
     },

@@ -31,7 +31,7 @@ export const playListData: Track[] = [
       artist: 'Javed Ali, AR Rahman',
       album: 'Rockstar',
       artwork: 'https://media5.bollywoodhungama.in/wp-content/uploads/2016/03/Rockstar-Poster-Feature-306x393.jpg',
-      url: require('../assets/audio/four.mp3'),
+      url: require('../assets/audio/five.mp3'),
     },
     {
       id: 5,
@@ -39,7 +39,7 @@ export const playListData: Track[] = [
       artist: 'Vishal & Shekhar, Shilpa Rao',
       album: 'Pathaan',
       artwork: 'https://c.saavncdn.com/807/Pathaan-Hindi-2022-20221222104158-500x500.jpg',
-      url: require('../assets/audio/five.mp3'),
+      url: require('../assets/audio/four.mp3'),
     },
   ];
   
