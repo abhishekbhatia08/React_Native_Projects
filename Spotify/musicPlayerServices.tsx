@@ -5,7 +5,7 @@ import { playListData } from "./src/utils/constants";
 export async function setupPlayer() {
     let isSetup = false;
     try {
-        await TrackPlayer.getActiveTrack();
+        await TrackPlayer.getCurrentTrack();
         isSetup = true; 
     } catch (error) {
         await TrackPlayer.setupPlayer();
@@ -18,7 +18,6 @@ export async function setupPlayer() {
 export async function addTrack() {
     await TrackPlayer.add(playListData);
     await TrackPlayer.setRepeatMode(RepeatMode.Queue);
-    
 }
 
 export async function playbackService() {
